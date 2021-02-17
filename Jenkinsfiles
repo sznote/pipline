@@ -1,5 +1,5 @@
 node('agent1'){
-  stage('Example'){
+  stage('build image'){
       
     checkout scm
     def dockerfile = 'Dockerfile'
