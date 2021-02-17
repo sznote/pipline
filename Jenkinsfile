@@ -1,9 +1,21 @@
-node('agent1'){
-  stage('build image'){
-      
-    checkout scm
-    def dockerfile = 'Dockerfile'
-    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} .") 
-  
-  }
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
