@@ -9,7 +9,7 @@ pipeline  {
   }
   
   stages {
-	state('Cloneing git') {
+	stage('Cloneing git') {
 	  step {
 	    git( url: 'https://github.com/sznote/pipline.git' ,
            branch: 'main' )
@@ -33,7 +33,7 @@ pipeline  {
 	  }
 	}
   
-    state('remove Unused docker image') {
+    stage('remove Unused docker image') {
 	  step{
 	    sh "docker rmi $registry/$dockerImage"
 	  }
