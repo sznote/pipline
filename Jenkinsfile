@@ -35,7 +35,7 @@ pipline {
   
     state('remove Unused docker image') {
 	  step{
-	    sh "docker rmi $registry/$dockerImage
+	    sh "docker rmi $registry/$dockerImage"
 	  }
   
     }
