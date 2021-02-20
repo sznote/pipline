@@ -1,6 +1,6 @@
 pipeline  {
   environment {
-    registry = "https://gitlab:5050"
+    registry = "gitlab:5050"
 	registryCredential = 'gitlab-registry'
 	dockerImage='saza/sazademo/pip-image' + ":${BUILD_NUMBER}"
   }
@@ -26,7 +26,7 @@ pipeline  {
 	stage('Pulling image'){
 	  steps{
 	    script {
-		   docker.withRegistry(registry, registryCredential){
+		   docker.withRegistry('https://' + registry, registryCredential){
 		      dcokerImage.push()
 		   }
 		}
