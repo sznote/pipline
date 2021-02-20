@@ -10,13 +10,13 @@ pipeline  {
   
   stages {
 	stage('Cloneing git') {
-	  step {
+	  steps {
 	    git( url: 'https://github.com/sznote/pipline.git' ,
            branch: 'main' )
 		}
 	  }
     stage('Build image') {
-	  step{
+	  steps{
 	    script {
 	      dcokerImage = docker.build dockerImage
 	    }
@@ -24,7 +24,7 @@ pipeline  {
 	}
 	
 	stage('Pulling image'){
-	  step{
+	  steps{
 	    script {
 		   docker.withRegistry(registry, registryCredential){
 		      dcokerImage.push()
@@ -34,7 +34,7 @@ pipeline  {
 	}
   
     stage('remove Unused docker image') {
-	  step{
+	  steps{
 	    sh "docker rmi $registry/$dockerImage"
 	  }
   
