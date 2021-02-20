@@ -1,4 +1,4 @@
-pipline {
+pipeline  {
   environment {
     registry = "https://gitlab:5050"
 	registryCredential = 'gitlab-registry'
@@ -25,7 +25,7 @@ pipline {
 	
 	stage('Pulling image'){
 	  step{
-	    scrtip{
+	    script {
 		   docker.withRegistry(registry, registryCredential){
 		      dcokerImage.push()
 		   }
