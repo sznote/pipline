@@ -2,7 +2,7 @@ pipeline  {
   environment {
     registry = "gitlab:5050"
 	registryCredential = 'gitlab-registry'
-	dockerImage='saza/sazademo/pip-image' + ":${BUILD_NUMBER}"
+	dockerImage='saza/sazademo/pip-image' + ":v1.${BUILD_NUMBER}"
   }
   agent {
 	node { label 'agent1' }
